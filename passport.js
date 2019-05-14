@@ -4,7 +4,7 @@ const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
 const { JWT_SECRET } = require('./config/index');
 const User = require('./models/user');
-const { isValidPassword } = require('./helpers/bcrypt');
+const { isValidHash } = require('./helpers/bcrypt');
 
 passport.use(
   new JwtStrategy(
@@ -39,7 +39,7 @@ passport.use(
         if (!user) {
           return done(null, false, { message: 'USER_NOT_FOUND' });
         }
-        const isMatch = await isValidPassword(password, user.dataValues.password);
+        const isMatch = await isValidHash(password, user.dataValues.password);
         if (!isMatch) {
           return done(null, false, { message: 'INVALID_PASSWORD' });
         }

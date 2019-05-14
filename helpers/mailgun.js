@@ -1,5 +1,4 @@
 const Mailgun = require('mailgun-js');
-const { encrypt } = require('../helpers/cipher');
 const { DOMAIN, MAILGUN_API_KEY, MAILGUN_DOMAIN } = require('../config/index');
 
 const mailgun = new Mailgun({
@@ -17,8 +16,7 @@ const sendEmail = config =>
     });
   });
 
-const sendVerifyEmail = email => {
-  const hash = encrypt(email);
+const sendVerifyEmail = (email, hash) => {
   const template = `
     <html>
       <head><title>WalletConnect Pay - Verify your email</title></head>
@@ -49,8 +47,7 @@ const sendVerifyEmail = email => {
   return sendEmail(config);
 };
 
-const sendResetPasswordEmail = email => {
-  const hash = encrypt(email);
+const sendResetPasswordEmail = (email, hash) => {
   const template = `
     <html>
       <head><title>WalletConnect Pay - Reset your password</title></head>
@@ -82,8 +79,7 @@ const sendResetPasswordEmail = email => {
   return sendEmail(config);
 };
 
-const sendInviteWaitingList = email => {
-  const hash = encrypt(email);
+const sendInviteWaitingList = (email, hash) => {
   const template = `
     <html>
       <head><title>WalletConnect Pay - Invite to Closed Beta</title></head>

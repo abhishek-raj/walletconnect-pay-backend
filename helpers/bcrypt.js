@@ -1,28 +1,28 @@
 const bcrypt = require('bcrypt');
 
 /**
- * @desc validates if password is the same
- * @param  {String}  [password]
+ * @desc validates if value is the same
+ * @param  {String}  [value]
  * @param  {String}  [original]
  * @return {Boolean}
  */
-const isValidPassword = async (password, original) => {
-  const isValid = await bcrypt.compare(password, original);
+const isValidHash = async (value, original) => {
+  const isValid = await bcrypt.compare(value, original);
   return isValid;
 };
 
 /**
- * @desc generate password hash
- * @param  {String}  [password]
+ * @desc generate value hash
+ * @param  {String}  [value]
  * @return {Boolean}
  */
-const generatePasswordHash = async password => {
+const generateHash = async value => {
   const salt = await bcrypt.genSalt();
-  const passwordHash = await bcrypt.hash(password, salt);
+  const passwordHash = await bcrypt.hash(value, salt);
   return passwordHash;
 };
 
 module.exports = {
-  isValidPassword,
-  generatePasswordHash
+  isValidHash,
+  generateHash
 };
