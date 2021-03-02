@@ -23,8 +23,8 @@
     "clean:build": "rm -rf build",
     "clean:node_modules": "rm -rf node_modules",
     "clean:all": "npm run clean:build && npm run clean:node_modules",
-    "dev": "babel-node --extensions '.ts' src/index.ts",
-    "build": "babel ./src --extensions '.ts' --out-dir ./build",
+    "dev": "babel-node --presets @babel/preset-env --extensions .ts src/index.ts",
+    "build": "babel ./src --extensions .ts --out-dir ./build",
     "test": "mocha --require ./babel-polyfill.js test/**/*.spec.ts",
     "start": "node ./build",
     "deploy": "NODE_ENV=production pm2 start ./build --name=server"
