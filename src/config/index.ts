@@ -8,7 +8,7 @@ const debug = env !== 'production'
 const host = 'walletconnectpay.com'
 const bindaddress = process.env.BIND_ADDRESS || '127.0.0.1'
 
-const rootPath = path.join(__dirname, '../../')
+const rootPath = path.join(__dirname, '../../../')
 const clientPath = path.join(rootPath, 'client/build')
 const tempPath = path.join(rootPath, 'temp')
 
