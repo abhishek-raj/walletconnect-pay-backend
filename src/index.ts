@@ -191,7 +191,7 @@ app.get('*', function (req, res: any) {
   res.sendFile('index.html')
 })
 
-app.listen(config.port, (err, address) => {
+app.listen(config.port, config.bindaddress, (err, address) => {
   if (err) {
     throw err
   }
