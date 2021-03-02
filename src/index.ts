@@ -192,6 +192,7 @@ app.get('*', function (req, res: any) {
 })
 
 app.listen(config.port, config.bindaddress, (err, address) => {
+  console.log("Running on PORT", config.port)
   if (err) {
     throw err
   }
